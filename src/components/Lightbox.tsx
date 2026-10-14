@@ -63,7 +63,11 @@ export default function Lightbox({ photos, index, onClose, onNavigate }: Lightbo
       onTouchEnd={(e) => {
         const diff = e.changedTouches[0].clientX - touchStartX.current;
         if (Math.abs(diff) > 50) {
-          diff > 0 ? goPrev() : goNext();
+          if (diff > 0) {
+            goPrev();
+          } else {
+            goNext();
+          }
         }
       }}
     >
